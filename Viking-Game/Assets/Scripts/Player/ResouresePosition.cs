@@ -15,11 +15,10 @@ public class ResouresePosition : MonoBehaviour
 
     public string type;
 
-    [SerializeField]
-    Transform lastt;
+    public Transform lastt;
 
 
-    float speed = 3f;
+    float speed = 7f;
     int stopTime = 200;
     bool isMinning = false;
 
@@ -42,19 +41,37 @@ public class ResouresePosition : MonoBehaviour
 
         if (rowResourses.Count > 0 )
         {
-
-            if (rowResourses[index].transform.gameObject.active) {
-                
-                speed = 3f;
-                transform.position = Vector3.MoveTowards(transform.position, rowResourses[index].transform.position, speed * Time.deltaTime);
-                Quaternion desRotation = Quaternion.LookRotation(rowResourses[index].transform.position - transform.position);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
-
-                if (!isMinning)
+            if (index != 0) {
+                if (rowResourses[index].transform.gameObject.active && !rowResourses[index - 1].transform.gameObject.active)
                 {
-                    animator.SetBool("forword", true);
+
+                    speed = 7f;
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(rowResourses[index].transform.position.x, 0.5f, rowResourses[index].transform.position.z), speed * Time.deltaTime);
+                    Quaternion desRotation = Quaternion.LookRotation(rowResourses[index].transform.position - transform.position);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
+
+                    if (!isMinning)
+                    {
+                        animator.SetBool("forword", true);
+                    }
+                }
+            } 
+            else if (index ==0) {
+                if (rowResourses[index].transform.gameObject.active)
+                {
+
+                    speed = 7f;
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(rowResourses[index].transform.position.x, 0.5f, rowResourses[index].transform.position.z), speed * Time.deltaTime);
+                    Quaternion desRotation = Quaternion.LookRotation(rowResourses[index].transform.position - transform.position);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
+
+                    if (!isMinning)
+                    {
+                        animator.SetBool("forword", true);
+                    }
                 }
             }
+            
             
         }
 
@@ -62,8 +79,6 @@ public class ResouresePosition : MonoBehaviour
 
      void reActiveAll()
     {
-
-        
 
         if (rowResourses[rowResourses.Count - 1] == null)
         {
@@ -106,31 +121,31 @@ public class ResouresePosition : MonoBehaviour
                 {
                     case "red":
 
-                        uiManager.redToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        uiManager.redToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x,0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "blue":
-                        uiManager.blueToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        uiManager.blueToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "iron":
-                        uiManager.ironToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        uiManager.ironToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "gold":
-                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "tree":
-                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        uiManager.treeToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.05f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
@@ -148,7 +163,7 @@ public class ResouresePosition : MonoBehaviour
                 }
                 else
                 {
-                    speed = 3f;
+                    speed = 7f;
                     stopTime = 100;
                     animator.SetBool("Minning", false);
                     animator.SetBool("forword", true);

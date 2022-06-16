@@ -8,7 +8,13 @@ public class moveCitizen : MonoBehaviour
     public bool access,isBusy = false;
     int last = 0;
     int ran = 1;
+    Animator animator;
     public string characterType;
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -16,8 +22,12 @@ public class moveCitizen : MonoBehaviour
         {
             if (!access)
             {
-
+                
+                animator.SetBool("forword", true);
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(paths[ran].position.x, 1f, paths[ran].position.z - 0.80f), 9f * Time.deltaTime);
+                Quaternion desRotation = Quaternion.LookRotation(new Vector3(paths[ran].position.x, 1f, paths[ran].position.z - 0.80f) - transform.position);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
+
                 last = ran;
 
             }
@@ -38,8 +48,10 @@ public class moveCitizen : MonoBehaviour
     {
 
         GameObject mm = GameObject.Find("EventSystem").GetComponent<UiManager>().Items[18];
-
+        animator.SetBool("forword", true);
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(mm.transform.position.x, 1f, mm.transform.position.z), 6f * Time.deltaTime);
+        Quaternion desRotation = Quaternion.LookRotation(mm.transform.position - transform.position);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -56,6 +68,7 @@ public class moveCitizen : MonoBehaviour
 
         if (collision.gameObject.tag == "WeapansMaker")
         {
+            animator.SetBool("forword", false);
             UiManager uiManager = GameObject.Find("EventSystem").GetComponent<UiManager>();
             PlayerPrefs.SetInt("Citizen", PlayerPrefs.GetInt("Citizen", 0) - 1);
 
@@ -100,7 +113,7 @@ public class moveCitizen : MonoBehaviour
                     uiManager.instantiateIronCollector();
                     Destroy(gameObject);
                     break;
-                case "GoldCutter":
+                case "GoldCollector":
                     uiManager.instantiateGoldCollector();
                     Destroy(gameObject);
                     break;

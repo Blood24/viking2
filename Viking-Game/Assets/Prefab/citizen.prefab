@@ -1266,6 +1266,7 @@ MonoBehaviour:
   - {fileID: 3692868099514303820, guid: 44beed177144ad046a8ab1e712f7e9b5, type: 3}
   access: 0
   isBusy: 0
+  characterType: 
 --- !u!1 &5077832201327884011
 GameObject:
   m_ObjectHideFlags: 0
