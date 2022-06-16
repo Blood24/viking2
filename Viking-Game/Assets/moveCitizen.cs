@@ -10,8 +10,6 @@ public class moveCitizen : MonoBehaviour
     int ran = 1;
     public string characterType;
 
-
-    // Update is called once per frame
     void Update()
     {
         if (!isBusy)
@@ -59,6 +57,8 @@ public class moveCitizen : MonoBehaviour
         if (collision.gameObject.tag == "WeapansMaker")
         {
             UiManager uiManager = GameObject.Find("EventSystem").GetComponent<UiManager>();
+            PlayerPrefs.SetInt("Citizen", PlayerPrefs.GetInt("Citizen", 0) - 1);
+
             switch (characterType) {
                 case "gaurd1":
                     uiManager.instantiateGuard();

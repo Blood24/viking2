@@ -10,13 +10,14 @@ public class ResouresePosition : MonoBehaviour
     public List<Transform> rowResourses;
     int index = 0;
     [SerializeField]
-    GameObject toInstantiate;
+    public GameObject toInstantiate;
     Animator animator;
+
+    public string type;
 
     [SerializeField]
     Transform lastt;
 
-    public List<Transform> itemsToCollect = new List<Transform>();
 
     float speed = 3f;
     int stopTime = 200;
@@ -25,13 +26,14 @@ public class ResouresePosition : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
     }
 
     [Obsolete]
     private void Update()
     {
         movePlayer();
-        
+        reActiveAll();
     }
 
     [Obsolete]
@@ -40,11 +42,14 @@ public class ResouresePosition : MonoBehaviour
 
         if (rowResourses.Count > 0 )
         {
-            Debug.Log("Miner Move");
+
             if (rowResourses[index].transform.gameObject.active) {
                 
                 speed = 3f;
                 transform.position = Vector3.MoveTowards(transform.position, rowResourses[index].transform.position, speed * Time.deltaTime);
+                Quaternion desRotation = Quaternion.LookRotation(rowResourses[index].transform.position - transform.position);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
+
                 if (!isMinning)
                 {
                     animator.SetBool("forword", true);
@@ -55,13 +60,22 @@ public class ResouresePosition : MonoBehaviour
 
     }
 
-    public void reActiveAll()
+     void reActiveAll()
     {
-        foreach (Transform t in rowResourses)
+
+        
+
+        if (rowResourses[rowResourses.Count - 1] == null)
         {
-            t.gameObject.SetActive(true);
+
+            foreach (Transform t in rowResourses)
+            {
+                t.gameObject.SetActive(true);
+            }
+            index = 0;
+
         }
-        index = 0;
+        
         
     }
 
@@ -86,10 +100,43 @@ public class ResouresePosition : MonoBehaviour
 
                  animator.SetBool("Minning", false);
                  animator.SetBool("forword", true);
+                UiManager uiManager = GameObject.Find("EventSystem").GetComponent<UiManager>();
 
-                itemsToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
-                rowResourses[index].gameObject.SetActive(false);
-                index += 1;
+                switch (type)
+                {
+                    case "red":
+
+                        uiManager.redToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        rowResourses[index].gameObject.SetActive(false);
+                        index += 1;
+
+                        break;
+                    case "blue":
+                        uiManager.blueToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        rowResourses[index].gameObject.SetActive(false);
+                        index += 1;
+
+                        break;
+                    case "iron":
+                        uiManager.ironToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        rowResourses[index].gameObject.SetActive(false);
+                        index += 1;
+
+                        break;
+                    case "gold":
+                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        rowResourses[index].gameObject.SetActive(false);
+                        index += 1;
+
+                        break;
+                    case "tree":
+                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, rowResourses[index].position, Quaternion.identity).transform);
+                        rowResourses[index].gameObject.SetActive(false);
+                        index += 1;
+
+                        break;
+                }
+
 
                 if (index == rowResourses.Count)
                 {

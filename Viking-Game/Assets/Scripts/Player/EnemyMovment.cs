@@ -35,8 +35,6 @@ public class EnemyMovment : MonoBehaviour
         EnemeisArr = GameObject.Find("EventSystem").GetComponent<UiManager>().EnemeisArr;
         GaurdsArr = GameObject.Find("EventSystem").GetComponent<UiManager>().GaurdsArr;
 
-        
-
 
         if (enamySpeed > 0 && GaurdsArr.Count > 0)
         {
@@ -84,7 +82,6 @@ public class EnemyMovment : MonoBehaviour
             animator.SetBool("Walk", true);
             transform.position = Vector3.MoveTowards(transform.position, GaurdsArr[targetPosi].transform.position, enamySpeed * Time.deltaTime);
 
-            //float angle = Quaternion.Angle(GaurdsArr[0].transform.rotation, transform.rotation);
             Quaternion desRotation = Quaternion.LookRotation(GaurdsArr[targetPosi].transform.position - transform.position);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 2000 * Time.deltaTime);
 

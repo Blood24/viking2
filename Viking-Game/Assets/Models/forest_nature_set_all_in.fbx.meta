@@ -23,7 +23,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -77,7 +77,202 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: forest_nature_set_all_in(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tree_average_bare
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 15.196716, y: 0, z: -10.980276}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_average_regular
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -0.1824913, y: 0, z: -10.980276}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_average_lush
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -17.340847, y: 0, z: -10.980276}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_small_regular
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 24.289755, y: 0, z: -11.026317}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_small_bare
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 27.448296, y: 0, z: -11.026317}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_Spruce_small_02
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -23.718071, y: 0, z: 1.8224564}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_Spruce_tiny_01
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 7.5261874, y: 0, z: 1.8224564}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_Spruce_tiny_02
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -0.3696251, y: 0, z: 1.8224564}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Tree_Spruce_small_01
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -11.073845, y: 0, z: 1.8224564}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bush_average
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -2.2237625, y: 0, z: 12.316067}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bush_average_bare
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 3.1875076, y: 0, z: 12.316067}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bush_group_average
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -13.377346, y: 0, z: 12.781864}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bush_group_big
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -20.33437, y: 0, z: 12.781864}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bush_group_small
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -7.7171555, y: 0, z: 12.781864}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stump_average_high
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 14.391517, y: 0, z: 0.77220625}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stump_average_flat
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 24.34002, y: 0, z: 0.77220625}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stump_average_low
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 21.025541, y: 0, z: 0.77220625}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stump_average_hollow
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 17.67833, y: 0, z: 0.77220625}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Log_big_regular
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 25.287445, y: 0, z: -4.4774866}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Log_big_knotty
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 16.083038, y: 0, z: -4.4774866}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Branch_average_bare
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 21.760649, y: 0, z: 5.4046574}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Branch_average_leaves
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 15.881859, y: 0, z: 5.4046574}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stone_average_01
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 17.922699, y: 0, z: 12.446374}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stone_average_01_mossy
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 15.394638, y: 0, z: 12.446374}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stone_group_average
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 12.257721, y: 0, z: 12.446374}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Stone_group_average_mossy
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 8.928528, y: 0, z: 12.446374}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Grass_bush_high_01
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 23.405136, y: 0, z: 8.593281}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Grass_bush_low_01
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 20.83785, y: 0, z: 8.593281}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Flower_bush_white
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 20.826042, y: 0, z: 10.6114435}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Flower_bush_blue
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 22.175667, y: 0, z: 10.6114435}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Flower_bush_red
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 23.549736, y: 0, z: 10.6114435}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mushroom_big_brown
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 24.23635, y: 0, z: 12.853796}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mushroom_big_group_brown
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 23.375824, y: 0, z: 12.853796}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mushroom_flat_white
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 22.504713, y: 0, z: 12.853796}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mushroom_flat_group_white
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 21.651388, y: 0, z: 12.853796}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mushroom_high_yellow
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 20.965546, y: 0, z: 12.853796}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Mushroom_high_group_yellow
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: 20.300728, y: 0, z: 12.853796}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: SimpleGround
+      parentName: forest_nature_set_all_in(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -88,7 +283,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

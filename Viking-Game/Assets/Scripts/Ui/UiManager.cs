@@ -17,26 +17,29 @@ public class UiManager : MonoBehaviour
     Transform location;
 
 
-    public List<GameObject> EnemeisArr, GaurdsArr,citizensArr = new List<GameObject>();
+    public List<GameObject> EnemeisArr, GaurdsArr,citizensArr , ItemsToInstantiate = new List<GameObject>();
+    
+    public List<Transform> RedResourses, BlueResourses, IronResourses, GoldResourses, TreeResources = new List<Transform>();
 
-    public List<Transform> RedResourses, BlueResourses, IronResourses, GoldResourses = new List<Transform>();
+    public List<Transform> redToCollect, blueToCollect, ironToCollect, goldToCollect, treeToCollect = new List<Transform>();
+
 
     float swordCounter = 5f;
     float hammerCounter = 5f;
     float sheildCounter = 5f;
-    float axeCounter = 2f;
-    float pickaxeCounter = 2f;
+    float axeCounter = 5f;
+    float pickaxeCounter = 5f;
 
     /*
     
-    0 - minerCrystalRed,
-    1 - minerCrystalBlue,
-    2 - minerIron,
-    3 - minerGold,
-    4 - treeCutter,
-    5 - --,
-    6 - Gaurd2,
-    7 - enemy 1,
+    0 - minerCrystalRed
+    1 - minerCrystalBlue
+    2 - minerIron
+    3 - minerGold
+    4 - treeCutter
+    5 - --
+    6 - Gaurd2
+    7 - enemy 1
     8 - Gaurd1
     9 - repositry1
     10 - repositry2
@@ -51,32 +54,32 @@ public class UiManager : MonoBehaviour
     19 - shiltter 1
     20 - shiltter 2
     21 - citizen
-
-
     */
 
     [SerializeField]
-    Text t1,t2,t3, t4, t5,t6,t7,t8;
+    Text t1,t2,t3, t4, t5, t6, t7, t8, t9, t10, t11;
 
 
     private void Start()
     {
         PlayerPrefs.SetInt("RedCrystals", 1000);
         PlayerPrefs.SetInt("BlueCrystals", 0);
-        PlayerPrefs.SetInt("Iron", 25);
+        PlayerPrefs.SetInt("Iron", 250);
         PlayerPrefs.SetInt("Gold", 0);
         PlayerPrefs.SetInt("Trees", 1000);
         PlayerPrefs.SetInt("Swords",0);
         PlayerPrefs.SetInt("Shields",0);
-        PlayerPrefs.SetInt("Hammers",0);
-        PlayerPrefs.SetInt("Axe", 200);
-        PlayerPrefs.SetInt("Pickaxe", 200);
+        PlayerPrefs.SetInt("Hammers", 0);
+        PlayerPrefs.SetInt("Axe", 0);
+        PlayerPrefs.SetInt("Pickaxe", 0);
+        PlayerPrefs.SetInt("Citizen", 0);
     }
 
     void LateUpdate()
     {
         setValues();
         makeWeapons();
+
     }
 
 
@@ -102,6 +105,11 @@ public class UiManager : MonoBehaviour
 
             }
         }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
+        }
     }
 
     public void citizenMinerBlueCrystal()
@@ -121,6 +129,11 @@ public class UiManager : MonoBehaviour
                 SSTools.ShowMessage("Need Pickaxe !!", SSTools.Position.top, SSTools.Time.threeSecond);
 
             }
+        }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
         }
     }
 
@@ -142,6 +155,11 @@ public class UiManager : MonoBehaviour
 
             }
         }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
+        }
     }
 
     public void citizenMinerGold()
@@ -161,6 +179,11 @@ public class UiManager : MonoBehaviour
                 SSTools.ShowMessage("Need Pickaxe !!", SSTools.Position.top, SSTools.Time.threeSecond);
 
             }
+        }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
         }
     }
 
@@ -182,6 +205,11 @@ public class UiManager : MonoBehaviour
 
             }
         }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
+        }
     }
 
     public void citizenGaurd1()
@@ -201,6 +229,11 @@ public class UiManager : MonoBehaviour
                 SSTools.ShowMessage("Need Weapans !!", SSTools.Position.top, SSTools.Time.threeSecond);
 
             }
+        }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
         }
     }
 
@@ -222,6 +255,11 @@ public class UiManager : MonoBehaviour
 
             }
         }
+        else
+        {
+            SSTools.ShowMessage("No citizen !!", SSTools.Position.top, SSTools.Time.threeSecond);
+
+        }
     }
 
     public void citizenCollectorRed()
@@ -229,18 +267,10 @@ public class UiManager : MonoBehaviour
         if (citizensArr.Count > 0)
         {
 
-            if (PlayerPrefs.GetInt("Hammers") > 0 && PlayerPrefs.GetInt("Shields") > 0)
-            {
-                citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
-                citizensArr[0].GetComponent<moveCitizen>().characterType = "RedCollector";
-                citizensArr.RemoveAt(0);
-            }
-
-            else
-            {
-                SSTools.ShowMessage("Need Weapans !!", SSTools.Position.top, SSTools.Time.threeSecond);
-
-            }
+            citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
+            citizensArr[0].GetComponent<moveCitizen>().characterType = "RedCollector";
+            citizensArr.RemoveAt(0);
+           
         }
         else
         {
@@ -254,18 +284,10 @@ public class UiManager : MonoBehaviour
         if (citizensArr.Count > 0)
         {
 
-            if (PlayerPrefs.GetInt("Hammers") > 0 && PlayerPrefs.GetInt("Shields") > 0)
-            {
-                citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
-                citizensArr[0].GetComponent<moveCitizen>().characterType = "BlueCollector";
-                citizensArr.RemoveAt(0);
-            }
-
-            else
-            {
-                SSTools.ShowMessage("Need Weapans !!", SSTools.Position.top, SSTools.Time.threeSecond);
-
-            }
+            citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
+            citizensArr[0].GetComponent<moveCitizen>().characterType = "BlueCollector";
+            citizensArr.RemoveAt(0);
+            
         }
         else
         {
@@ -279,18 +301,10 @@ public class UiManager : MonoBehaviour
         if (citizensArr.Count > 0)
         {
 
-            if (PlayerPrefs.GetInt("Hammers") > 0 && PlayerPrefs.GetInt("Shields") > 0)
-            {
-                citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
-                citizensArr[0].GetComponent<moveCitizen>().characterType = "IronCollector";
-                citizensArr.RemoveAt(0);
-            }
-
-            else
-            {
-                SSTools.ShowMessage("Need Weapans !!", SSTools.Position.top, SSTools.Time.threeSecond);
-
-            }
+            citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
+            citizensArr[0].GetComponent<moveCitizen>().characterType = "IronCollector";
+            citizensArr.RemoveAt(0);
+            
         }
         else
         {
@@ -303,19 +317,10 @@ public class UiManager : MonoBehaviour
     {
         if (citizensArr.Count > 0)
         {
-
-            if (PlayerPrefs.GetInt("Hammers") > 0 && PlayerPrefs.GetInt("Shields") > 0)
-            {
-                citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
-                citizensArr[0].GetComponent<moveCitizen>().characterType = "GoldCollector";
-                citizensArr.RemoveAt(0);
-            }
-
-            else
-            {
-                SSTools.ShowMessage("Need Weapans !!", SSTools.Position.top, SSTools.Time.threeSecond);
-
-            }
+            citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
+            citizensArr[0].GetComponent<moveCitizen>().characterType = "GoldCollector";
+            citizensArr.RemoveAt(0);
+            
         }
         else
         {
@@ -328,19 +333,11 @@ public class UiManager : MonoBehaviour
     {
         if (citizensArr.Count > 0)
         {
-
-            if (PlayerPrefs.GetInt("Hammers") > 0 && PlayerPrefs.GetInt("Shields") > 0)
-            {
-                citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
-                citizensArr[0].GetComponent<moveCitizen>().characterType = "TreeCollector";
-                citizensArr.RemoveAt(0);
-            }
-
-            else
-            {
-                SSTools.ShowMessage("Need Weapans !!", SSTools.Position.top, SSTools.Time.threeSecond);
-
-            }
+            
+            citizensArr[0].GetComponent<moveCitizen>().isBusy = true;
+            citizensArr[0].GetComponent<moveCitizen>().characterType = "TreeCollector";
+            citizensArr.RemoveAt(0);
+            
         }
         else
         {
@@ -348,12 +345,7 @@ public class UiManager : MonoBehaviour
 
         }
     }
-
-    public void cccc()
-    {
-
-    }
-
+    
     #endregion
       
 
@@ -363,56 +355,73 @@ public class UiManager : MonoBehaviour
 
     public void instantiateCrystalRed()
     {
-        Items[0].SetActive(true);
-        //GameObject gamobj = Instantiate(Items[0], new Vector3(Items[0].transform.position.x + increase2, Items[0].transform.position.y, Items[0].transform.position.z), Items[0].transform.rotation);
-        //gamobj.transform.parent = GameObject.Find("Miners").transform;
-        //gamobj.GetComponent<ResouresePosition>().rowResourses = RedResourses;
-        //GaurdsArr.Add(gamobj);
+        //Items[0].SetActive(true);
+        GameObject gamobj = Instantiate(Items[0], new Vector3(Items[0].transform.position.x + increase2, Items[0].transform.position.y, Items[0].transform.position.z), Items[0].transform.rotation);
+        gamobj.transform.parent = GameObject.Find("Miners").transform;
+        gamobj.GetComponent<ResouresePosition>().rowResourses = RedResourses;
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[0];
+        gamobj.GetComponent<ResouresePosition>().type = "red";
+
+
         //hideEnemiesMenu();
-        //increase2 += 1.3f;
+        increase2 += 1.3f;
         PlayerPrefs.SetInt("Pickaxe", PlayerPrefs.GetInt("Pickaxe") - 1); 
     }
 
     public void instantiateCrystalBlue()
     {
-        Items[1].SetActive(true);
-        //GameObject gamobj = Instantiate(Items[1], new Vector3(Items[0].transform.position.x + increase2, Items[0].transform.position.y, Items[0].transform.position.z), Items[0].transform.rotation);
-        //gamobj.transform.parent = GameObject.Find("Miners").transform;
-        //gamobj.GetComponent<ResouresePosition>().rowResourses = BlueResourses;
-        //GaurdsArr.Add(gamobj);
+        //Items[1].SetActive(true);
+        GameObject gamobj = Instantiate(Items[0], new Vector3(Items[0].transform.position.x + increase2, Items[0].transform.position.y, Items[0].transform.position.z), Items[0].transform.rotation);
+        gamobj.transform.parent = GameObject.Find("Miners").transform;
+        gamobj.GetComponent<ResouresePosition>().rowResourses = BlueResourses;
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[1];
+        gamobj.GetComponent<ResouresePosition>().type = "blue";
         //hideEnemiesMenu();
-        //increase2 += 1.3f;
+        increase2 += 1.3f;
 
         PlayerPrefs.SetInt("Pickaxe", PlayerPrefs.GetInt("Pickaxe") - 1);
     }
 
     public void instantiateIron()
     {
-        Items[2].SetActive(true);
-        //GameObject gamobj = Instantiate(Items[2]);
-        //gamobj.transform.parent = GameObject.Find("Miners").transform;
-        //gamobj.GetComponent<ResouresePosition>().rowResourses = IronResourses;
-        //GaurdsArr.Add(gamobj);
+        //Items[2].SetActive(true);
+        GameObject gamobj = Instantiate(Items[0]);
+        gamobj.transform.parent = GameObject.Find("Miners").transform;
+        gamobj.GetComponent<ResouresePosition>().rowResourses = IronResourses;
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[2];
+        gamobj.GetComponent<ResouresePosition>().type = "iron";
         //hideEnemiesMenu();
-        //increase2 += 1.3f;
+        increase2 += 1.3f;
         PlayerPrefs.SetInt("Pickaxe", PlayerPrefs.GetInt("Pickaxe") - 1);
 
     }
 
     public void instantiateGold()
     {
-        Items[3].SetActive(true);
-        //GameObject gamobj = Instantiate(Items[3]);
-        //gamobj.transform.parent = GameObject.Find("Miners").transform;
-        //gamobj.GetComponent<ResouresePosition>().rowResourses = GoldResourses;
-        //GaurdsArr.Add(gamobj);
+        //Items[3].SetActive(true);
+        GameObject gamobj = Instantiate(Items[0]);
+        gamobj.transform.parent = GameObject.Find("Miners").transform;
+        gamobj.GetComponent<ResouresePosition>().rowResourses = GoldResourses;
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[3];
+        gamobj.GetComponent<ResouresePosition>().type = "gold";
         //hideEnemiesMenu();
-        //increase2 += 1.3f;
+        increase2 += 1.3f;
         PlayerPrefs.SetInt("Pickaxe", PlayerPrefs.GetInt("Pickaxe") - 1);
     }
 
     public void instantiateTreeCutter()
     {
+
+        GameObject gamobj = Instantiate(Items[4]);
+        gamobj.transform.parent = GameObject.Find("Miners").transform;
+        gamobj.GetComponent<ResouresePosition>().rowResourses = TreeResources;
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[4];
+        gamobj.GetComponent<ResouresePosition>().type = "tree";
+        //hideEnemiesMenu();
+        increase2 += 1.3f;
+        PlayerPrefs.SetInt("Pickaxe", PlayerPrefs.GetInt("Pickaxe") - 1);
+
+        /*
         if (Items[9].active)
         {
             Items[4].SetActive(true);
@@ -420,7 +429,7 @@ public class UiManager : MonoBehaviour
         else
         {
             SSTools.ShowMessage("you must build a Repository First", SSTools.Position.top, SSTools.Time.threeSecond);
-        }
+        }*/
     }
 
     public void instantiateGuard()
@@ -498,6 +507,31 @@ public class UiManager : MonoBehaviour
         Items[17].SetActive(true);
     }
 
+    public void instantiateCitizens()
+    {
+        if (Items[19].active)
+        {
+            if (PlayerPrefs.GetInt("RedCrystals") >= 5)
+            {
+
+                GameObject citizen = Instantiate(Items[21]);
+                citizen.transform.parent = GameObject.Find("Citizens").transform;
+                citizensArr.Add(citizen);
+                PlayerPrefs.SetInt("RedCrystals", PlayerPrefs.GetInt("RedCrystals") - 5);
+
+                PlayerPrefs.SetInt("Citizen", PlayerPrefs.GetInt("Citizen", 0) + 1);
+            }
+            else
+            {
+                SSTools.ShowMessage("need crystals", SSTools.Position.top, SSTools.Time.threeSecond);
+
+            }
+        }
+        else
+        {
+            SSTools.ShowMessage("create shiltter", SSTools.Position.top, SSTools.Time.threeSecond);
+        }
+    }
 
     #endregion
 
@@ -605,64 +639,72 @@ public class UiManager : MonoBehaviour
     void makeWeapons() {
         if (Items[18].active)
         {
+
+
+            //////// sword
             if (swordCounter > 0.0f && PlayerPrefs.GetInt("Iron") >= 5)
             {
-                swordCounter -= 1;
+                swordCounter -= 1.5f * Time.deltaTime;
             }
-            else if (swordCounter == 0.0f)
+            else if (swordCounter <= 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
             {
                 PlayerPrefs.SetInt("Iron", PlayerPrefs.GetInt("Iron") - 5);
                 PlayerPrefs.SetInt("Swords", PlayerPrefs.GetInt("Swords") + 1);
-                swordCounter = 2f;
+                swordCounter = 5;
             }
 
+            //////// hammer
             if (hammerCounter > 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
             {
-                hammerCounter -= 1;
+                hammerCounter -= 1.5f * Time.deltaTime;
             }
-            else if (hammerCounter == 0.0f)
+            else if (hammerCounter <= 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
             {
                 PlayerPrefs.SetInt("Iron", PlayerPrefs.GetInt("Iron") - 5);
                 PlayerPrefs.SetInt("Hammers", PlayerPrefs.GetInt("Hammers") + 1);
-                hammerCounter = 2f;
+                hammerCounter = 5;
             }
 
+            //////// sheild
             if (sheildCounter > 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
             {
-                sheildCounter -= 1;
+                sheildCounter -= 1.5f * Time.deltaTime;
             }
-            else if (sheildCounter == 0.0f)
+            else if (sheildCounter <= 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
             {
                 PlayerPrefs.SetInt("Iron", PlayerPrefs.GetInt("Iron") - 5);
                 PlayerPrefs.SetInt("Shields", PlayerPrefs.GetInt("Shields") + 1);
-                sheildCounter = 2f;
+                sheildCounter = 5;
+            }
+
+
+            //////// axe
+            if (axeCounter > 0.0f && PlayerPrefs.GetInt("Iron",0) >= 5)
+            {
+                axeCounter -= 1.5f * Time.deltaTime;
+            }
+            else if (axeCounter <= 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
+            {
+                PlayerPrefs.SetInt("Iron", PlayerPrefs.GetInt("Iron") - 5);
+                PlayerPrefs.SetInt("Axe", PlayerPrefs.GetInt("Axe") + 1);
+                axeCounter = 5;
+
+            }
+
+            //////// pickaxe
+            if (pickaxeCounter > 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
+            {
+                pickaxeCounter -= 1.5f * Time.deltaTime;
+            }
+            else if (pickaxeCounter <= 0.0f && PlayerPrefs.GetInt("Iron", 0) >= 5)
+            {
+                PlayerPrefs.SetInt("Iron", PlayerPrefs.GetInt("Iron") - 5);
+                PlayerPrefs.SetInt("Pickaxe", PlayerPrefs.GetInt("Pickaxe") + 1);
+                pickaxeCounter = 5;
             }
         }
     }
 
-    public void instantiateCitizens()
-    {
-        if (Items[19].active)
-        {
-            if (PlayerPrefs.GetInt("RedCrystals") >= 5)
-            {
-
-            GameObject citizen = Instantiate(Items[21]);
-            citizen.transform.parent = GameObject.Find("Citizens").transform;
-            citizensArr.Add(citizen);
-                PlayerPrefs.SetInt("RedCrystals", PlayerPrefs.GetInt("RedCrystals") - 5);
-            }
-            else
-            {
-                SSTools.ShowMessage("need crystals", SSTools.Position.top, SSTools.Time.threeSecond);
-
-            }
-        }
-        else
-        {
-            SSTools.ShowMessage("create shiltter", SSTools.Position.top, SSTools.Time.threeSecond);
-        }
-    }
 
     public void ExitGame()
     {
@@ -671,14 +713,17 @@ public class UiManager : MonoBehaviour
 
     void setValues()
     {
-        t1.text = "Red Crystal = " + PlayerPrefs.GetInt("RedCrystals", 0);
-        t2.text = "Blue Crystal = " + PlayerPrefs.GetInt("BlueCrystals", 0);
-        t3.text = "Iron = " + PlayerPrefs.GetInt("Iron", 0);
-        t4.text = "Gold = " + PlayerPrefs.GetInt("Gold", 0);
-        t5.text = "Trees = " + PlayerPrefs.GetInt("Trees", 0);
-        t6.text = "Swords = " + PlayerPrefs.GetInt("Swords", 0);
-        t7.text = "Hammers = " + PlayerPrefs.GetInt("Hammers", 0);
-        t8.text = "Shields = " + PlayerPrefs.GetInt("Shields", 0);
+        t1.text = " " + PlayerPrefs.GetInt("RedCrystals", 0);
+        t2.text = " " + PlayerPrefs.GetInt("BlueCrystals", 0);
+        t3.text = " " + PlayerPrefs.GetInt("Iron", 0);
+        t4.text = " " + PlayerPrefs.GetInt("Gold", 0);
+        t5.text = " " + PlayerPrefs.GetInt("Trees", 0);
+        t6.text = " " + PlayerPrefs.GetInt("Swords", 0);
+        t7.text = " " + PlayerPrefs.GetInt("Hammers", 0);
+        t8.text = " " + PlayerPrefs.GetInt("Shields", 0);
+        t9.text = " " + PlayerPrefs.GetInt("Axe", 0);
+        t10.text = " " + PlayerPrefs.GetInt("Pickaxe", 0);
+        t11.text = " " + PlayerPrefs.GetInt("Citizen", 0);
     }
 
 }

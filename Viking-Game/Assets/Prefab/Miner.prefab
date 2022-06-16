@@ -4707,7 +4707,7 @@ Animator:
   m_GameObject: {fileID: 8682430592626887922}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0000f929c7525024d9ff4e2a662de240, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 69ee01c280adb5c4e8981433c4482228, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -4759,8 +4759,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rowResourses: []
   toInstantiate: {fileID: 8886979496816797275, guid: 17f38f7da12ce1c4394261b31f248bf2, type: 3}
+  type: 
   lastt: {fileID: 2049189587077264574, guid: 723aa4efaf4b6a14c8e3c8ee47a3b6fa, type: 3}
-  itemsToCollect: []
 --- !u!1 &8784771981471091388
 GameObject:
   m_ObjectHideFlags: 0

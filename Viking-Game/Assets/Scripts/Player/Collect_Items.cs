@@ -8,9 +8,6 @@ public class Collect_Items : MonoBehaviour
     Transform Path;
 
     [SerializeField]
-    GameObject Miner;
-
-    [SerializeField]
     GameObject Repository;
 
     [SerializeField]
@@ -37,19 +34,35 @@ public class Collect_Items : MonoBehaviour
 
     private void collectItems()
     {
+        switch (nameOfResourses) {
+            case "RedCrystals":
+            itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().redToCollect;
+                break;
+            case "BlueCrystals":
+                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().blueToCollect;
+                break;
+            case "Iron":
+                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().ironToCollect;
+                break;
+            case "Gold":
+                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().goldToCollect;
+                break;
 
-            itemsToCollect = Miner.GetComponent<ResouresePosition>().itemsToCollect;
-
+        }
 
         if (itemsToCollect.Count > 0 && index < itemsToCollect.Count && !pickedUp)
         {
-            if (go) {
+            if (go)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, Path.position, speed * Time.deltaTime);
-            } else {
+            }
+            else
+            {
                 transform.position = Vector3.MoveTowards(transform.position, itemsToCollect[index].transform.position, speed * Time.deltaTime);
             }
         }
-        else if (pickedUp) {
+        else if (pickedUp)
+        {
             if (back)
             {
                 transform.position = Vector3.MoveTowards(transform.position, Repository.transform.position, speed * Time.deltaTime);
@@ -74,13 +87,57 @@ public class Collect_Items : MonoBehaviour
             print("Repository");
             PlayerPrefs.SetInt(nameOfResourses, PlayerPrefs.GetInt(nameOfResourses, 0) + revenue);
             Destroy(itemsToCollect[index].gameObject);
+            
+
             index += 1;
             if (index == itemsToCollect.Count)
             {
                 
                 itemsToCollect.Clear();
-                Miner.GetComponent<ResouresePosition>().itemsToCollect.Clear();
-                Miner.GetComponent<ResouresePosition>().reActiveAll();
+                switch (nameOfResourses)
+                {
+                    case "RedCrystals":
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().redToCollect.Clear();
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().RedResourses.ForEach(Obj =>
+                        {
+                            Obj.gameObject.SetActive(true);
+                        }
+                        );
+                        break;
+                    case "BlueCrystals":
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().blueToCollect.Clear();
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().BlueResourses.ForEach(Obj =>
+                        {
+                            Obj.gameObject.SetActive(true);
+                        }
+                        );
+                        break;
+                    case "Iron":
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().ironToCollect.Clear();
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().IronResourses.ForEach(Obj =>
+                        {
+                            Obj.gameObject.SetActive(true);
+                        }
+                        );
+                        break;
+                    case "Gold":
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().goldToCollect.Clear();
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().GoldResourses.ForEach(Obj =>
+                        {
+                            Obj.gameObject.SetActive(true);
+                        }
+                        );
+                        break;
+                    case "Tree":
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().treeToCollect.Clear();
+                        GameObject.Find("EventSystem").GetComponent<UiManager>().TreeResources.ForEach(Obj =>
+                        {
+                            Obj.gameObject.SetActive(true);
+                        }
+                        );
+                        break;
+
+                }
                 index = 0;
 
             }
