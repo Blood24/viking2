@@ -24,7 +24,7 @@ public class moveCitizen : MonoBehaviour
             {
                 
                 animator.SetBool("forword", true);
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(paths[ran].position.x, 1f, paths[ran].position.z - 0.80f), 9f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(paths[ran].position.x, 1f, paths[ran].position.z - 0.80f), 4f * Time.deltaTime);
                 Quaternion desRotation = Quaternion.LookRotation(new Vector3(paths[ran].position.x, 1f, paths[ran].position.z - 0.80f) - transform.position);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
 

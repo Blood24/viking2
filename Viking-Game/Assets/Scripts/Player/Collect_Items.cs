@@ -18,12 +18,17 @@ public class Collect_Items : MonoBehaviour
     public List<Transform> itemsToCollect;
 
     Animator animator;
-    float speed = 20f;
+    float speed = 5f;
     int index = 0;
 
     bool pickedUp = false;
     bool go = true;
     bool back = false;
+
+     void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -51,20 +56,24 @@ public class Collect_Items : MonoBehaviour
                 itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().treeToCollect;
                 break;
         }
-
         if (itemsToCollect.Count > 0 && index < itemsToCollect.Count && !pickedUp)
         {
+            
             if (go)
             {
                 animator.SetBool("Minning", false);
                 animator.SetBool("forword", true);
                 transform.position = Vector3.MoveTowards(transform.position, Path.position, speed * Time.deltaTime);
+                
+                Debug.Log("goo");
             }
             else
             {
                 animator.SetBool("Minning", false);
                 animator.SetBool("forword", true);
                 transform.position = Vector3.MoveTowards(transform.position,new Vector3(itemsToCollect[index].transform.position.x, 0.5f, itemsToCollect[index].transform.position.z) , speed * Time.deltaTime);
+                Debug.Log("goo else");
+
             }
         }
         else if (pickedUp)

@@ -18,7 +18,7 @@ public class ResouresePosition : MonoBehaviour
     public Transform lastt;
 
 
-    float speed = 7f;
+    float speed = 3f;
     int stopTime = 200;
     bool isMinning = false;
 
@@ -45,7 +45,7 @@ public class ResouresePosition : MonoBehaviour
                 if (rowResourses[index].transform.gameObject.active && !rowResourses[index - 1].transform.gameObject.active)
                 {
 
-                    speed = 7f;
+                    speed = 3f;
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(rowResourses[index].transform.position.x, 0.5f, rowResourses[index].transform.position.z), speed * Time.deltaTime);
                     Quaternion desRotation = Quaternion.LookRotation(rowResourses[index].transform.position - transform.position);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
@@ -60,7 +60,7 @@ public class ResouresePosition : MonoBehaviour
                 if (rowResourses[index].transform.gameObject.active)
                 {
 
-                    speed = 7f;
+                    speed = 3f;
                     transform.position = Vector3.MoveTowards(transform.position, new Vector3(rowResourses[index].transform.position.x, 0.5f, rowResourses[index].transform.position.z), speed * Time.deltaTime);
                     Quaternion desRotation = Quaternion.LookRotation(rowResourses[index].transform.position - transform.position);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, desRotation.eulerAngles.y, 0), 1500 * Time.deltaTime);
@@ -121,25 +121,25 @@ public class ResouresePosition : MonoBehaviour
                 {
                     case "red":
 
-                        uiManager.redToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x,0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
+                        uiManager.redToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x,0.4f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "blue":
-                        uiManager.blueToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
+                        uiManager.blueToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.4f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "iron":
-                        uiManager.ironToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
+                        uiManager.ironToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.4f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
                         break;
                     case "gold":
-                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.5f, rowResourses[index].position.z), Quaternion.identity).transform);
+                        uiManager.goldToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.4f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
@@ -163,7 +163,7 @@ public class ResouresePosition : MonoBehaviour
                 }
                 else
                 {
-                    speed = 7f;
+                    speed = 3f;
                     stopTime = 100;
                     animator.SetBool("Minning", false);
                     animator.SetBool("forword", true);

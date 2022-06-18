@@ -1346,16 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a9c77e43d13724aa2cca2a5b6abd54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rowResourses:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  rowResourses: []
   toInstantiate: {fileID: 3783445787661862, guid: 68a5cc2032a2dfb4b86cb51e6df1103c, type: 3}
   type: tree
   lastt: {fileID: 0}

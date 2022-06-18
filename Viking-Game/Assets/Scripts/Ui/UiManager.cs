@@ -429,7 +429,7 @@ public class UiManager : MonoBehaviour
         //Items[2].SetActive(true);
         GameObject gamobj = Instantiate(Items[0]);
         gamobj.transform.parent = GameObject.Find("Miners").transform;
-        if (MinersBlue.Count == 0)
+        if (MinersIron.Count == 0)
         {
             for (int x = 0; x < 8; x++)
             {
@@ -438,7 +438,7 @@ public class UiManager : MonoBehaviour
 
             gamobj.GetComponent<ResouresePosition>().lastt = lastPos[2];
         }
-        else if (MinersBlue.Count == 1)
+        else if (MinersIron.Count == 1)
         {
             for (int x = 12; x < 16; x++)
             {
@@ -448,7 +448,7 @@ public class UiManager : MonoBehaviour
             gamobj.GetComponent<ResouresePosition>().lastt = lastPos[7];
         }
         MinersIron.Add(gamobj);
-        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[3];
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[2];
         gamobj.GetComponent<ResouresePosition>().type = "iron";
         
         //hideEnemiesMenu();
@@ -462,26 +462,26 @@ public class UiManager : MonoBehaviour
         //Items[3].SetActive(true);
         GameObject gamobj = Instantiate(Items[0]);
         gamobj.transform.parent = GameObject.Find("Miners").transform;
-        if (MinersBlue.Count == 0)
+        if (MinersGold.Count == 0)
         {
             for (int x = 0; x < 8; x++)
             {
-                gamobj.GetComponent<ResouresePosition>().rowResourses.Add(IronResourses[x]);
+                gamobj.GetComponent<ResouresePosition>().rowResourses.Add(GoldResourses[x]);
             }
 
             gamobj.GetComponent<ResouresePosition>().lastt = lastPos[3];
         }
-        else if (MinersBlue.Count == 1)
+        else if (MinersGold.Count == 1)
         {
             for (int x = 12; x < 16; x++)
             {
-                gamobj.GetComponent<ResouresePosition>().rowResourses.Add(IronResourses[x]);
+                gamobj.GetComponent<ResouresePosition>().rowResourses.Add(GoldResourses[x]);
             }
 
             gamobj.GetComponent<ResouresePosition>().lastt = lastPos[8];
         }
         MinersGold.Add(gamobj);
-        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[4];
+        gamobj.GetComponent<ResouresePosition>().toInstantiate = ItemsToInstantiate[3];
         gamobj.GetComponent<ResouresePosition>().type = "gold";
         
 
