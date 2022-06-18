@@ -54,6 +54,10 @@ public class UiManager : MonoBehaviour
     19 - shiltter 1
     20 - shiltter 2
     21 - citizen
+    22 - collector 1.2
+    23 - collector 2.2
+    24 - collector 3.2
+    25 - collector 4.2
     */
 
     [SerializeField]
@@ -63,10 +67,10 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt("RedCrystals", 1000);
-        PlayerPrefs.SetInt("BlueCrystals", 0);
+        PlayerPrefs.SetInt("BlueCrystals", 200);
         PlayerPrefs.SetInt("Iron", 250);
-        PlayerPrefs.SetInt("Gold", 0);
-        PlayerPrefs.SetInt("Trees", 1000);
+        PlayerPrefs.SetInt("Gold", 200);
+        PlayerPrefs.SetInt("Trees", 3000);
         PlayerPrefs.SetInt("Swords",0);
         PlayerPrefs.SetInt("Shields",0);
         PlayerPrefs.SetInt("Hammers", 0);
@@ -558,22 +562,38 @@ public class UiManager : MonoBehaviour
 
     public void instantiateRedCollector()
     {
-        Items[13].SetActive(true);
+        if(!Items[13].active){
+            Items[13].SetActive(true);
+        }else if(!Items[22].active){
+            Items[22].SetActive(true);
+        }
     }
 
     public void instantiateBlueCollector()
     {
-        Items[14].SetActive(true);
+        if(!Items[14].active){
+            Items[14].SetActive(true);
+        }else if(!Items[23].active){
+            Items[23].SetActive(true);
+        }
     }
 
     public void instantiateIronCollector()
     {
-        Items[15].SetActive(true);
+        if(!Items[15].active){
+            Items[15].SetActive(true);
+        }else if(!Items[24].active){
+            Items[24].SetActive(true);
+        }
     }
 
     public void instantiateGoldCollector()
     {
-        Items[16].SetActive(true);
+        if(!Items[16].active){
+            Items[16].SetActive(true);
+        }else if(!Items[25].active){
+            Items[25].SetActive(true);
+        }
     }
 
     public void instantiateTreeCollector()

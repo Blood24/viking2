@@ -19,7 +19,7 @@ public class ResouresePosition : MonoBehaviour
 
 
     float speed = 3f;
-    int stopTime = 200;
+    int stopTime = 500;
     bool isMinning = false;
 
     void Start()
@@ -145,7 +145,7 @@ public class ResouresePosition : MonoBehaviour
 
                         break;
                     case "tree":
-                        uiManager.treeToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.05f, rowResourses[index].position.z), Quaternion.identity).transform);
+                        uiManager.treeToCollect.Add(Instantiate(toInstantiate, new Vector3(rowResourses[index].position.x, 0.15f, rowResourses[index].position.z), Quaternion.identity).transform);
                         rowResourses[index].gameObject.SetActive(false);
                         index += 1;
 
@@ -164,7 +164,7 @@ public class ResouresePosition : MonoBehaviour
                 else
                 {
                     speed = 3f;
-                    stopTime = 100;
+                    stopTime = 500;
                     animator.SetBool("Minning", false);
                     animator.SetBool("forword", true);
                 }

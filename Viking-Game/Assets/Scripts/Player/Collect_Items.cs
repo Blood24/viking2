@@ -13,6 +13,8 @@ public class Collect_Items : MonoBehaviour
     [SerializeField]
     string nameOfResourses;
 
+public int type;
+
     [SerializeField]
     int revenue;
     public List<Transform> itemsToCollect;
@@ -41,16 +43,44 @@ public class Collect_Items : MonoBehaviour
     {
         switch (nameOfResourses) {
             case "RedCrystals":
-                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().redToCollect;
+                for(int i = 0;i <12;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().redToCollect[i]);
+                }
                 break;
+            case "RedCrystals1":
+            for(int i = 12;i < 24;i++){
+                itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().redToCollect[i]);
+            }
+            break;
             case "BlueCrystals":
-                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().blueToCollect;
+                for(int i = 0;i <12;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().blueToCollect[i]);
+                }
+                break;
+            case "BlueCrystals1":
+                for(int i = 12;i <24;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().blueToCollect[i]);
+                }
                 break;
             case "Iron":
-                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().ironToCollect;
+                for(int i = 0;i <8;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().ironToCollect[i]);
+                }
+                break;
+            case "Iron1":
+                for(int i = 8;i <16;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().ironToCollect[i]);
+                }
                 break;
             case "Gold":
-                itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().goldToCollect;
+               for(int i = 0;i <8;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().goldToCollect[i]);
+                }
+                break;
+            case "Gold1":
+                for(int i = 8;i <16;i++){
+                    itemsToCollect.Add(GameObject.Find("EventSystem").GetComponent<UiManager>().goldToCollect[i]);
+                }
                 break;
             case "Trees":
                 itemsToCollect = GameObject.Find("EventSystem").GetComponent<UiManager>().treeToCollect;
